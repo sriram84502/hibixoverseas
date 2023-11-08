@@ -2521,6 +2521,12 @@ Header Style One
 ====================================================================
 
 ***/
+.header-lower, .header-top{
+  backdrop-filter: blur(10px);
+}
+.logo{
+  height: 70px;
+}
 @media only screen and (max-width: 1023px) {
   .header-style-one .header-top {
     display: none;
@@ -2594,8 +2600,8 @@ Header Style One
 .header-style-one .header-lower .logo-box .logo {
   max-width: 220px;
   height: 160px;
-  background-color: var(--theme-color1);
-  background-image: url(../images/icons/logo-bg.png);
+  /* background-color: var(--theme-color1); */
+  /* background-image: url(../images/icons/logo-bg.png); */
   border-radius: 0 0 5px 5px;
   padding: 15px 20px;
   display: -webkit-box;
@@ -3790,7 +3796,7 @@ Section Title
   top: 0;
   height: 100%;
   width: 100%;
-  /* background-color: var(--bg-theme-color1); */
+  background-color: var(--bg-theme-color1);
   opacity: 0.2;
   content: "";
 }
@@ -6068,6 +6074,16 @@ Section Title
 ====================================================================
 
 ***/
+.carousel-outer{
+  display: flex;
+  gap: 2px;
+}
+@media only screen and (max-width: 767px) {
+  .carousel-outer{
+    display: flex;
+ flex-direction: column;
+  }
+}
 .countries-section {
   position: relative;
   padding: 120px 0;
@@ -6133,7 +6149,7 @@ Section Title
   text-align: center;
   background-color: #ebeef5;
   display: inline-block;
-  font-weight: 800;
+  font-weight: 500;
   border-radius: 50px;
 }
 .country-block .theme-btn:hover {
@@ -7150,13 +7166,14 @@ Section Title
       flex-wrap: wrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
-          justify-content: space-between;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   padding: 2px 2px;
-  padding-left: 40px;
-  max-width: 805px;
+  /* padding-left: 40px; */
+  max-width: 705px;
+  text-align: center;
   width: 100%;
   margin: 0 auto;
   margin-top: 10px;

@@ -434,28 +434,39 @@ var THEMEMASCOT = {};
 	}
 
 
-	//Accordion Box
-	if ($('.accordion-box').length) {
+	$(document).ready(function() {
 		$(".accordion-box").on('click', '.acc-btn', function () {
-
 			var outerBox = $(this).parents('.accordion-box');
 			var target = $(this).parents('.accordion');
-
-			if ($(this).hasClass('active') !== true) {
-				$(outerBox).find('.accordion .acc-btn').removeClass('active ');
-			}
-
-			if ($(this).next('.acc-content').is(':visible')) {
-				return false;
+			
+			if ($(this).hasClass('active')) {
+				// Clicked accordion is already open, so close it
+				$(this).removeClass('active');
+				target.removeClass('active-block');
+				$(this).next('.acc-content').slideUp(300);
 			} else {
+				// Clicked accordion is closed, so open it and close others
+				$(outerBox).find('.accordion .acc-btn').removeClass('active');
+				$(outerBox).find('.accordion').removeClass('active-block');
+				$(outerBox).find('.acc-content').slideUp(300);
 				$(this).addClass('active');
-				$(outerBox).children('.accordion').removeClass('active-block');
-				$(outerBox).find('.accordion').children('.acc-content').slideUp(300);
 				target.addClass('active-block');
 				$(this).next('.acc-content').slideDown(300);
 			}
 		});
-	}
+	});
+
+	$(document).on('click', function(event) {
+		if (!$(event.target).closest('.accordion-box').length) {
+			$('.accordion-box .acc-btn.active').removeClass('active');
+			$('.accordion-box .accordion.active-block').removeClass('active-block');
+			$('.accordion-box .acc-content:visible').slideUp(300);
+		}
+	});
+
+	$('.accordion-box').on('click', function(event) {
+		event.stopPropagation();
+	});
 
 	
 	//Fact Counter + Text Count
